@@ -1,0 +1,21 @@
+<!-- Up arrow -->
+<g id="up-arrow" fill="white" transform="translate(-279.22 -208.12)">
+    <path transform="matrix(.22413 0 0 .12089 335.67 164.35)" stroke-width="0" d="m-194.17 412.01h-28.827-28.827l14.414-24.965 14.414-24.965 14.414 24.965z"/>
+</g>
+<!-- Down arrow -->
+<g id="down-arrow" fill="white" transform="translate(-279.22 -208.12)">
+    <path transform="matrix(.22413 0 0 -.12089 335.67 257.93)" stroke-width="0" d="m-194.17 412.01h-28.827-28.827l14.414-24.965 14.414-24.965 14.414 24.965z"/>
+</g>
+</defs>
+</svg>
+<header>
+    <h1>
+        {{range $i, $crumb := .Breadcrumb}}<a href="{{html $crumb.Link}}">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}
+    </h1>
+</header>
+<main>
+    <div class="meta">
+        <div id="summary">
+            <span class="meta-item"><input type="text" placeholder="filter" id="filter" onkeyup='filter()'></span>
+        </div>
+    </div>
