@@ -1,4 +1,4 @@
-<script>
+<<script>
     var filterEl = document.getElementById('filter');
     filterEl.focus();
     function filter() {
@@ -33,34 +33,4 @@
     }
     var timeList = Array.prototype.slice.call(document.getElementsByTagName("time"));
     timeList.forEach(localizeDatetime);
-
-    var getUrlParameter = function getUrlParameter(sParam) {
-        var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-            }
-        }
-    };
-    function toggle(className){
-        var order = getUrlParameter('order');
-        var elements = document.getElementsByClassName(className);
-        for(var i = 0, length = elements.length; i < length; i++) {
-            var currHref = elements[i].href;
-            if(order=='desc'){ 
-                var chg = currHref.replace('desc', 'asc');
-                elements[i].href = chg;
-            }
-            if(order=='asc'){ 
-                var chg = currHref.replace('asc', 'desc');
-                elements[i].href = chg;
-            }
-        }
-    };
 </script>
