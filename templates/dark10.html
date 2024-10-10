@@ -1,0 +1,21 @@
+function readableFileSize(size) {
+    var units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+    var i = 0;
+    while(size >= 1024) {
+        size /= 1024;
+        ++i;
+    }
+    return parseFloat(size).toFixed(2) + ' ' + units[i];
+}
+
+function changeSize() {
+    var sizes = document.getElementsByTagName("size");
+
+    for (var i = 0; i < sizes.length; i++) {
+        humanSize = readableFileSize(sizes[i].innerHTML);
+        sizes[i].innerHTML = humanSize;
+    }
+}
+</script>
+</body>
+</html>
