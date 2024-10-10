@@ -1,0 +1,52 @@
+<meta-item {
+    margin-right: 1em;
+}
+#filter {
+    padding: 4px;
+    border: 1px solid;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+tr {
+    border-bottom: 1px dashed;
+}
+tbody tr:hover {
+    background-color: #1C1E22;
+}
+th,
+td {
+    text-align: left;
+    padding: 10px 2px; /* Changed from 0 to 2 */
+}
+th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    white-space: nowrap;
+}
+</style>
+<script>
+    var filterEl = document.getElementById('filter');
+    filterEl.focus();
+    function filter() {
+        var q = filterEl.value.trim().toLowerCase();
+        var elems = document.querySelectorAll('tr.file');
+        elems.forEach(function(el) {
+            if (!q) {
+                el.style.display = '';
+                return;
+            }
+            var nameEl = el.querySelector('.name');
+            var nameVal = nameEl.textContent.trim().toLowerCase();
+            if (nameVal.indexOf(q) !== -1) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    }
+</script>
+</body>
+</html>
