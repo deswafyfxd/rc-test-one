@@ -1,0 +1,66 @@
+<script>
+    var filterEl = document.getElementById('filter');
+    filterEl.focus();
+    function filter() {
+        var q = filterEl.value.trim().toLowerCase();
+        var elems = document.querySelectorAll('tr.file');
+        elems.forEach(function(el) {
+            if (!q) {
+                el.style.display = '';
+                return;
+            }
+            var nameEl = el.querySelector('.name');
+            var nameVal = nameEl.textContent.trim().toLowerCase();
+            if (nameVal.indexOf(q) !== -1) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    }
+    function localizeDatetime(e, index, ar) {
+        if (e.textContent === undefined) {
+            return;
+        }
+        var d = new Date(e.getAttribute('datetime'));
+        if (isNaN(d)) {
+            d = new Date(e.textContent);
+            if (isNaN(d)) {
+                return;
+            }
+        }
+        e.textContent = d.toLocaleString([], {day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit"});
+    }
+    var timeList = Array.prototype.slice.call(document.getElementsByTagName("time"));
+    timeList.forEach(localizeDatetime);
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+    function toggle(className){
+        var order = getUrlParameter('order');
+        var elements = document.getElementsByClassName(className);
+        for(var i = 0, length = elements.length; i < length; i++) {
+            var currHref = elements[i].href;
+            if(order=='desc'){ 
+                var chg = currHref.replace('desc', 'asc');
+                elements[i].href = chg;
+            }
+            if(order=='asc'){ 
+                var chg = currHref.replace('asc', 'desc');
+                elements[i].href = chg;
+            }
+        }
+    };
+</script>
